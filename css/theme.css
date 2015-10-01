@@ -1,0 +1,102 @@
+body,
+h1, h2, h3, h4, h5, h6,
+button, .button,
+.tabs dd > a, .tabs .tab-title > a
+{
+  font-family: "Raleway", Arial, sans-serif;
+}
+
+a:hover,
+a:focus
+{
+    color: #258faf;
+}
+.tab-bar
+{
+  background: #2BA6CB;
+}
+.left-small
+{
+  border-right: solid 1px #0F86A9;
+}
+.right-small
+{
+  border-left: solid 1px #0F86A9;
+}
+.left-off-canvas-menu
+{
+  background: #04708E;
+}
+ul.off-canvas-list li label
+{
+  color: #55B8D5;
+  background: #093F4D;
+  border-top: 1px solid #124F5F;
+  border-bottom: 1px solid rgb(24, 54, 63);
+}
+ul.off-canvas-list li a:hover
+{
+    background: #198AA9;
+}
+ul.off-canvas-list li a
+{
+  border-bottom: 1px solid #06566C;
+}
+.right-off-canvas-menu
+{
+  background: #04708E;
+}
+ul.off-canvas-list li a:hover
+{
+    background: #198AA9;
+}
+ul.off-canvas-list li a
+{
+  border-bottom: 1px solid #06566C;
+}
+.right-submenu
+{
+  background: #04708E;
+}
+.right-submenu .back > a
+{
+  color: #55B8D5;
+  background: #093F4D;
+  border-top: 1px solid #124F5F;
+  border-bottom: 1px solid rgb(24, 54, 63);
+}
+button.small,
+.button.small
+{
+    padding-top: 0.875rem;
+    padding-right: 1.75rem;
+    padding-bottom: 0.9375rem;
+    padding-left: 1.75rem;
+    font-size: 1rem;
+    margin: 0 5px;
+}
+code[class*="language-"],
+pre[class*="language-"]
+{
+  padding: 0;
+  font-family: monospace;
+}
+pre[class*="language-"]
+{
+  box-shadow: none;
+}
+code[class*="language-"]
+{
+  border:0;
+}
+.row {
+    max-width: 80em;
+}
+.tabs-content > .content 
+{
+  padding: 0;
+}
+:focus
+{
+  outline: 0;
+}

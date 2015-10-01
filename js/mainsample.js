@@ -30,8 +30,8 @@ window.onload = function()
     'pixelThreshold'    : 0,
     'lapseThreshold'    : 301,
     'onCreateImage'     : customImage,
-    // 'scroll'            : [source],
-    // 'showScrollArea'    : true
+    'scroll'            : [source],
+    'showScrollArea'    : true
   });
 
   function customImage(event)

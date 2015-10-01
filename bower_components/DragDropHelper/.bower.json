@@ -1,0 +1,28 @@
+{
+  "name": "DragDropHelper",
+  "authors": [
+    "valianton <valianton@mail.ru>"
+  ],
+  "description": "DragDropHelper - simple component for dragging and dropping DOM elements",
+  "main": "dragdrophelper.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "Apache License",
+  "homepage": "https://github.com/doclabsoft/DragDropHelper",
+  "private": false,
+  "dependencies": {
+    "closurelibrary": "*",
+    "hammerjs": "~2.0.4"
+  },
+  "_release": "fba080ad13",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fba080ad1364eb35ea6094a11b74f7bce3bf94fc"
+  },
+  "_source": "git://github.com/doclabsoft/DragDropHelper.git",
+  "_target": "*",
+  "_originalSource": "DragDropHelper",
+  "_direct": true
+}

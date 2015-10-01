@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DragDropHelper — test page</title>
+    <link rel="stylesheet" type="text/css" href="dragdrophelper.css">
+  </head>
+<body>
+  <div id="ddh-container" class="container-source"></div>
+
+  <script src="../../closurelibrary/closure/goog/base.js"></script>
+  <script src="../deps.js"></script>
+  <script src="../../hammerjs/hammer.min.js"></script>
+
+  <script type="text/javascript">
+    goog.require('DD.fx.DragDropHelper');
+
+    window.onload = function()
+    {
+      var source = document.getElementById('ddh-container');
+      createItem(source, 5);
+      var DragDropHelper = new DD.fx.DragDropHelper(
+      {
+        'source'            : [source],
+        'target'            : [source],
+        'allowClassNames'   : 'item',
+        'grid'              : [[source, source]],
+        'gridGutter'        : 20,
+        'pixelThreshold'    : 0,
+        'lapseThreshold'    : 301,
+        'onCreateImage'     : customImage
+      });
+    };
+
+    function customImage(event)
+    {
+      var this_ = this,
+          item = this.getCopy(),
+          img = new Image();
+      img.src = item.children[0].src;
+
+      img.onload = function ()
+      {
+        // debugger;
+        this_.setCustomDragImage(img);
+
+        goog.style.setStyle(this_.DragSource.getDragObject().image_, 
+        { 
+          'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
+        });
+
+        this_.getItemImage().style.visibility = 'visible';
+        this_.DragSource.getDragObject().style.display = 'none';
+        item.style.display = '';
+      };
+    };
+
+    function createItem(container, count)
+    {
+      for (var i = 0; i < count; i++)
+      {
+        var img = goog.dom.createDom(goog.dom.TagName.IMG, {'draggable': false, 'src' : 'img/'+ (Math.floor(Math.random() * (count - 1 + 1)) + 1) +'.png'}),
+            item = goog.dom.createDom(goog.dom.TagName.DIV, {'class' : 'item'}, [img]);
+        container.appendChild(item);
+      };
+    }    
+  </script>
+
+</body>
+</html>
