@@ -22,3 +22,13 @@ var DragDropHelper = new DD.fx.DragDropHelper({
   'allowClassNames'   : 'item'
 });
 ```
+## Options ##
+* __source__ (array) - arrays of DOM-elements. Specifies a container to be produced Drag Event;
+* __target__ (array) - arrays of DOM-elements. Specifies a container to be produced Drop Event;
+* __scroll__ (array) - arrays of DOM-elements. Specifies a container to be produced Over Event;
+* __allowClassNames__ (string) - allowed class name of DOM-element;
+* __grid__ (array) - arrays of DOM-elements;
+* __gridGutter__ (number) - margin beetwen drag items;
+* __pixelThreshold__ (number) - pixel threshold;
+* __lapseThreshold__ (number) - lapse threshold;
+* __showScrollArea__ (boolean) - show scroll area while dragging;
