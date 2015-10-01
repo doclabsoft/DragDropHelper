@@ -1,0 +1,20 @@
+{
+  "name": "agparhomenko",
+  "version": "1.0.0",
+  "authors": [
+    "valianton <valianton@mail.ru>"
+  ],
+  "description": "DragDropHelper - simple component for dragging and dropping",
+  "main": "dragdrophelper.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/doclabsoft/DragDropHelper",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "closurelibrary": "*",
+    "hammerjs": "~2.0.4"
+  }
+}
