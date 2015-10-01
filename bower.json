@@ -1,5 +1,5 @@
 {
-  "name": "agparhomenko",
+  "name": "DragDropHelper",
   "version": "1.0.0",
   "authors": [
     "valianton <valianton@mail.ru>"
@@ -9,11 +9,10 @@
   "moduleType": [
     "globals"
   ],
-  "license": "MIT",
+  "license": "Apache License",
   "homepage": "https://github.com/doclabsoft/DragDropHelper",
   "private": false,
   "dependencies": {
-    "jquery": "~2.1.4",
     "closurelibrary": "*",
     "hammerjs": "~2.0.4"
   }
