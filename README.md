@@ -1,2 +1,3 @@
-# drag-n-drop
+DragDropHelper
+==========================
 Ui component for dragging and dropping.
