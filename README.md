@@ -8,6 +8,7 @@ Ui component for dragging and dropping.
 Run ```create_deps.bat```.
 This operation generates a file deps.js in current dir, which will be registered dependences to the files of the component
 ### Link files ###
-```<script src="path_to_closure-library/closure/goog/base.js"></script>
-  <script src="path_to_dragdrophelper/deps.js"></script>
-  <script src="path_to/hammerjs/hammer.min.js"></script>```
+```javascript
+<script src="path_to_closure-library/closure/goog/base.js"></script>
+<script src="path_to_dragdrophelper/deps.js"></script>
+<script src="path_to/hammerjs/hammer.min.js"></script>```
