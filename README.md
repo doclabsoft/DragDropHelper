@@ -14,9 +14,11 @@ This operation generates a file deps.js in current dir, which will be registered
 <script src="path_to/hammerjs/hammer.min.js"></script>
 ```
 ### Initial DragDropHelper ###
+Default options
 ```javascript
+var source = document.getElementById('some-container');
 var DragDropHelper = new DD.fx.DragDropHelper({
-  'source'            : "some-HTMLElement",
+  'source'            : [source],
   'allowClassNames'   : 'item'
 });
 ```
