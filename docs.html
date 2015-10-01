@@ -1,0 +1,316 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DragDropHelper.js - Documentation</title>
+    <link rel="stylesheet" href="../../assets/lib/waves/waves.css"/>
+    <link rel="stylesheet" href="../../assets/lib/foundation/css/foundation.css"/>
+    <link rel="stylesheet" href="../../assets/css/font.css"/>
+    <link rel="stylesheet" href="../../assets/lib/prism/prism.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <!-- Пользовательские изменения установленных стилей. Подключается последним -->
+    <link rel="stylesheet" href="../../assets/theme/theme.css"/>
+
+    <script src="../../assets/lib/waves/waves.min.js"></script>
+    <script src="../../assets/lib/foundation/js/vendor/modernizr.js"></script>
+  </head>
+  
+  <body>
+
+    <header class="hide-for-small">
+      <div data-magellan-expedition="fixed" class="main-header">
+        <div class="row">
+          <div class="large-12 columns">
+            <a href="index.html" class="logo">DragDropHelper.js</a>
+            <nav>
+              <a href="index.html" class="waves">Getting Started</a>
+              <a href="examples.html" class="waves">Examples</a>
+              <a href="docs.html" class="selected waves">Documentation</a>
+            </nav>
+          </div>
+        </div>
+      </div>      
+    </header>  
+
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+      <nav class="tab-bar show-for-small">
+        <section class="left-small">
+          <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+        </section>
+         <section class="middle tab-bar-section">
+          <h1 class="title">DragDropHelper.js</h1>
+        </section>
+        <section class="right-small">
+          <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+        </section>
+      </nav>
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>DragDropHelper index</label></li>
+          <li><a href="index.html">Getting Started</a></li>
+          <li><a href="examples.html">Examples</a></li>
+          <li><a href="docs.html">Documentation</a></li>
+        </ul>
+      </aside>
+      <aside class="right-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>API & Documentation</label></li>
+          <li><a href="docs.html#Properties">Properties</a></li>
+          <li class="has-submenu"><a href="docs.html#Callbacks">Callbacks</a>
+            <ul class="right-submenu">
+                <li class="back"><a href="#">Back to API</a></li>
+                <li><a href="docs.html#onCreateImage">onCreateImage</a></li>
+                <li><a href="docs.html#onGetDragSource">onGetDragSource</a></li>
+                <li><a href="docs.html#onDragStart">onDragStart</a></li>
+                <li><a href="docs.html#onDragEnd">onDragEnd</a></li>
+                <li><a href="docs.html#onDragOverScroll">onDragOverScroll</a></li>
+                <li><a href="docs.html#onDragDrop">onDragDrop</a></li>
+                <li><a href="docs.html#onGetDropTarget">onGetDropTarget</a></li>
+                <li><a href="docs.html#onDragOver">onDragOver</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu"><a href="docs.html#Methods">Methods</a>
+            <ul class="right-submenu">
+              <li class="back"><a href="#">Back to API</a></li>
+              <li><a href="docs.html#getCopy">getCopy</a></li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+    <div class="row">
+      <div class="large-3 medium-4 columns">
+        <div class="hide-for-small">
+          
+          <ul class="side-nav">
+            <li class="heading">Basic</li>
+
+            <li><a href="#Properties" data-search="">Properties</a></li>
+            <li class="divider"></li>
+            
+            <li class="heading">Callbacks</li>
+            <li><a href="#onCreateImage">onCreateImage</a></li>
+            <li><a href="#onGetDragSource">onGetDragSource</a></li>
+            <li><a href="#onDragStart">onDragStart</a></li>
+            <li><a href="#onDragEnd">onDragEnd</a></li>
+            <li><a href="#onDragOverScroll">onDragOverScroll</a></li>
+            <li><a href="#onDragDrop">onDragDrop</a></li>
+            <li><a href="#onGetDropTarget">onGetDropTarget</a></li>
+            <li><a href="#onDragOver">onDragOver</a></li>
+            <li class="divider"></li>
+
+            <li class="heading">Methods</li>
+            <li><a href="#getCopy">getCopy</a></li>
+            <li><a href="#getItemImage">getItemImage</a></li>
+            <li><a href="#setCustomDragImage">setCustomDragImage</a></li>
+          </ul>
+
+        </div>
+      </div>
+      <div class="large-9 medium-8 columns">
+        
+        <h2>Documentation</h2>
+        <h3 id="Properties">Properties</h3>
+        
+        <table class="params-table">
+          <thead>
+          <tr>
+            <th width="100">Property</th>
+            <th width="70">Type</th>
+            <th width="70">Default</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>source</td>
+            <td>array</td>
+            <td>&nbsp;</td>
+            <td>The list of DOM element's containers which contains draggable elements.</td>
+          </tr>
+          <tr>
+            <td>target</td>
+            <td>array</td>
+            <td>&nbsp;</td>
+            <td>The list of DOM element's containers which accept being dropped on.</td>
+          </tr>
+          <tr>
+            <td>grid</td>
+            <td>array</td>
+            <td>&nbsp;</td>
+            <td>
+            The two-dimensional array of DOM elements. Inside arrays should contain two dom elements.
+            Generally first link is the same containers list that is set in the source parameter.
+            And second link is usually the list that is set in the target parameter
+            </td>
+          </tr>
+          <tr>
+            <td>pixelThreshold</td>
+            <td>number</td>
+            <td>0</td>
+            <td>The pixel threshold of the drag beginning. It works jointly with lapse threshold. The creation of the shape and the beginning of drag starts after lapseThreshold and pixelThreshold conditions' implementaion. If both properies are equal 0, the shape creation starts immediately on element's click.</td>
+          </tr>
+          <tr>
+            <td>lapseThreshold</td>
+            <td>number</td>
+            <td>300</td>
+            <td>The time threshold of element's drag. It works jointly with pixelThreshold. The creation of the shape and the beginning of drag starts after lapseThreshold and pixelThreshold conditions' implementaion. If both properies are equal 0, the shape creation starts immediately on element's click.</td>
+          </tr>
+          <tr>
+            <td>gridGutter</td>
+            <td>number</td>
+            <td>0</td>
+            <td>The distance between elements in a container, This property is should to set only if the indent between elements is set by css property margin</td>
+          </tr>
+          <tr>
+            <td>showScrollArea</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Show/hide the area scrolling container.</td>
+          </tr>
+          <tr>
+            <td>dropZoneTime</td>
+            <td>number</td>
+            <td>50</td>
+            <td>Delay before the creation of the area for dropping a portable item</td>
+          </tr>
+          </tbody>
+        </table>   
+    
+        <h3 id="Callbacks">Callbacks</h4>
+        <table class="u-full-width method-table">
+          <thead>
+          <tr>
+            <th style="width:120px;">Property</th>
+            <th style="width:80px;">Type</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td id="onCreateImage">onCreateImage</td>
+            <td>function</td>
+            <td>The callback function triggered when element's shape created. It can used for custom user's draggable shapes creation.</td>
+          </tr>
+          <tr>
+            <td id="onGetDragSource">onGetDragSource</td>
+            <td>function</td>
+            <td>The callback function triggered when element is captured.</td>
+          </tr>
+          <tr>
+            <td id="onDragStart">onDragStart</td>
+            <td>function</td>
+            <td>The callback function triggered when dragging starts</td>
+          </tr>
+          <tr>
+            <td id="onDragEnd">onDragEnd</td>
+            <td>function</td>
+            <td>The callback function triggered when dragging ends. It also is executed if drag and drop was aborted.</td>
+          </tr>
+          <tr>
+            <td id="onDragOverScroll">onDragOverScroll</td>
+            <td>function</td>
+            <td>The callback function triggered if it is necessary to scroll the conatiner's content, which over the shape moves</td>
+          </tr>
+          <tr>
+            <td id="onDragDrop">onDragDrop</td>
+            <td>function</td>
+            <td>The callback function triggered when element is dropped. It is executed on the component, on which container the element is dropped on</td>
+          </tr>
+          <tr>
+            <td id="onGetDropTarget">onGetDropTarget</td>
+            <td>function</td>
+            <td>The callback function triggered when the target element for drop is detected</td>
+          </tr>
+          <tr>
+            <td id="onDragOver">onDragOver</td>
+            <td>function</td>
+            <td>The callback function triggered when an accepted draggable is dragged over the droppable object</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <h3 id="Methods">Methods</h4>
+        <table class="u-full-width method-table">
+          <thead>
+          <tr>
+            <th style="width:120px;">Method</th>
+            <th style="width:80px;">Returns</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td id="getCopy">getCopy</td>
+            <td>HTMLElement</td>
+            <td>Returns a clone of a draggable element which is visible in a DOM structure at the moment. The original element is hidden, so it is impossible to get it's position and size. This is why the visual clone is used</td>
+          </tr>
+          <tr>
+            <td id="getItemImage">getItemImage</td>
+            <td>HTMLElement</td>
+            <td>Returns the image carried by the element</td>
+          </tr>
+          <tr>
+            <td id="setCustomDragImage">setCustomDragImage</td>
+            <td>HTMLElement</td>
+            <td>Set custom image transferred element</td>
+          </tr>
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </div>
+
+
+    <footer>
+      <div class="row">
+        <div class="large-12 columns">
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="row">
+        <div class="large-12 columns">
+          <section class="left">
+            <span>DragDropHelper.js</span>
+          </section>
+          <section class="right">
+            <span>© 2015 DragDropHelper. All rights reserved.</span>
+          </section>
+        </div>
+      </div>
+      </div>
+    </footer>
+    
+    <!-- close the off-canvas menu -->
+    <a class="exit-off-canvas"></a>
+
+    </div>
+  </div>
+
+  <script src="../../assets/lib/jquery/jquery-2.1.1.min.js"></script>
+  <script src="../../assets/lib/foundation/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation(
+    {
+      offcanvas : {
+      open_method: 'move', 
+      close_on_click : true
+      }
+    });
+    window.onload = function()
+    {
+      Waves.attach('.waves', ['waves-button']);
+      Waves.attach('.off-canvas-list a', ['waves-button']);
+      Waves.attach('.side-nav a', ['waves-button']);
+      Waves.init();
+    };
+  </script>
+  
+  </body>
+</html>
