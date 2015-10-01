@@ -1,3 +1,5 @@
+**Demo**: http://doclabsoft.github.io/DragDropHelper/
+
 DragDropHelper
 ==========================
 Ui component for dragging and dropping.
