@@ -225,7 +225,6 @@ window.onload = function()
 
   function customImage()
   {
-    debugger;
     var this_ = this,
         item = this.getCopy(),
         img = new Image();

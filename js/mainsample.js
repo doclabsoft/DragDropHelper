@@ -43,9 +43,7 @@ window.onload = function()
 
     img.onload = function ()
     {
-      // debugger;
       this_.setCustomDragImage(img);
-
       goog.style.setStyle(this_.DragSource.getDragObject().image_, 
       { 
         'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
