@@ -4,7 +4,7 @@
   "authors": [
     "valianton <valianton@mail.ru>"
   ],
-  "description": "DragDropHelper - simple component for dragging and dropping",
+  "description": "DragDropHelper - simple component for dragging and dropping DOM elements",
   "main": "dragdrophelper.js",
   "moduleType": [
     "globals"
