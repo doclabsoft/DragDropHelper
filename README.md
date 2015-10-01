@@ -36,5 +36,5 @@ var DragDropHelper = new DD.fx.DragDropHelper({
 * __showScrollArea__ (boolean) - Show/hide the area scrolling container.
 * __dropZoneTime__ (number) - Delay before the creation of the area for dropping a portable item.
 
-For more documentation please visit http://doclabsoft.github.io/DragDropHelper/
+For more documentation please visit: http://doclabsoft.github.io/DragDropHelper/docs.html
  
