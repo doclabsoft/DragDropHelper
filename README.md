@@ -13,3 +13,10 @@ This operation generates a file deps.js in current dir, which will be registered
 <script src="path_to_dragdrophelper/deps.js"></script>
 <script src="path_to/hammerjs/hammer.min.js"></script>
 ```
+### Initial DragDropHelper ###
+```javascript
+var DragDropHelper = new DD.fx.DragDropHelper({
+  'source'            : "some-HTMLElement",
+  'allowClassNames'   : 'item'
+});
+```
