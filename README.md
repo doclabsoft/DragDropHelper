@@ -1,4 +1,5 @@
 DragDropHelper
 ==========================
 Ui component for dragging and dropping.
-## Usage ##
+## Install ##
+```bower install DragDropHelper```
