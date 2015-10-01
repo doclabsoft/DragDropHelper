@@ -11,4 +11,5 @@ This operation generates a file deps.js in current dir, which will be registered
 ```javascript
 <script src="path_to_closure-library/closure/goog/base.js"></script>
 <script src="path_to_dragdrophelper/deps.js"></script>
-<script src="path_to/hammerjs/hammer.min.js"></script>```
+<script src="path_to/hammerjs/hammer.min.js"></script>
+```
