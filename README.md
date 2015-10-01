@@ -5,5 +5,9 @@ Ui component for dragging and dropping.
 ```$ bower install DragDropHelper```
 ## Usage ##
 ### Generate deps.js file ###
-Run ```create_deps.bat```
+Run ```create_deps.bat```.
 This operation generates a file deps.js in current dir, which will be registered dependences to the files of the component
+### Link files ###
+```<script src="path_to_closure-library/closure/goog/base.js"></script>
+  <script src="path_to_dragdrophelper/deps.js"></script>
+  <script src="path_to/hammerjs/hammer.min.js"></script>```
