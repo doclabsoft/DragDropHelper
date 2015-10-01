@@ -19,19 +19,52 @@
 
     window.onload = function()
     {
-      var cont = document.getElementById('ddh-container');
-      createItem(cont, 5);
+      var source = document.getElementById('ddh-container');
+      createItem(source, 5);
       var DragDropHelper = new DD.fx.DragDropHelper(
       {
-        'source'            : [cont],
-        'allowClassNames'   : 'item'
+        'source'            : [source],
+        'target'            : [source],
+        'allowClassNames'   : 'item',
+        'grid'              : [[source, source]],
+        'gridGutter'        : 20,
+        'pixelThreshold'    : 0,
+        'lapseThreshold'    : 301,
+        'onCreateImage'     : customImage
       });
+    };
+
+    function customImage(event)
+    {
+      var this_ = this,
+          item = this.getCopy(),
+          img = new Image();
+      img.src = item.children[0].src;
+
+      img.onload = function ()
+      {
+        // debugger;
+        this_.setCustomDragImage(img);
+
+        goog.style.setStyle(this_.DragSource.getDragObject().image_, 
+        { 
+          'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
+        });
+
+        this_.getItemImage().style.visibility = 'visible';
+        this_.DragSource.getDragObject().style.display = 'none';
+        item.style.display = '';
+      };
     };
 
     function createItem(container, count)
     {
       for (var i = 0; i < count; i++)
-        container.appendChild(goog.dom.createDom('div', {'class' : 'item'}));
+      {
+        var img = goog.dom.createDom(goog.dom.TagName.IMG, {'draggable': false, 'src' : 'img/'+ (Math.floor(Math.random() * (count - 1 + 1)) + 1) +'.png'}),
+            item = goog.dom.createDom(goog.dom.TagName.DIV, {'class' : 'item'}, [img]);
+        container.appendChild(item);
+      };
     }    
   </script>
 
