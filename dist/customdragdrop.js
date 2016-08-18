@@ -13,7 +13,7 @@ goog.require('goog.events.KeyCodes');
  * @constructor
  * @author Антон Пархоменко
  *
- * update
+ * update 1
  *
  */
 DD.fx.CustomDragDrop = function(settings)
