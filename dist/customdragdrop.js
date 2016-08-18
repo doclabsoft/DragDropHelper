@@ -13,9 +13,6 @@ goog.require('goog.events.KeyCodes');
  * @constructor
  * @author Антон Пархоменко
  *
- * @TODO Написать отдельный класс DD.fx.DragObject, который будет управлять зависимостями между основными функциями DragDrop. Много чего придется
- * вынести из классов DD.fx.DragSource и DD.fx.DropTarget, так как сейчас они выполняют не совсем свои роли и берут на себя
- * гораздо больший функционал, чем планировалось
  */
 DD.fx.CustomDragDrop = function(settings)
 {
