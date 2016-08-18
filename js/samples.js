@@ -148,9 +148,8 @@ window.onload = function()
       'source'            : [source],
       'scroll'            : [source],
       'allowClassNames'   : 'item',
-      // 'scrollParentMode'  : 'allscroll',
       'onCreateImage'     : customImage,
-      'pixelThreshold'    : 20
+      'pixelThreshold'    : {desktop: 20, sensor: 20}
     });
   };
 
@@ -166,9 +165,8 @@ window.onload = function()
       'source'            : [source],
       'scroll'            : [source],
       'allowClassNames'   : 'item',
-      // 'scrollParentMode'  : 'allscroll',
       'onCreateImage'     : customImage,
-      'lapseThreshold'    : 500
+      'lapseThreshold'    : {desktop: 500, sensor: 500}
     });
   };
 
@@ -223,27 +221,8 @@ window.onload = function()
     };
   };
 
-  function customImage()
+  function customImage(event)
   {
-    var this_ = this,
-        item = this.getCopy(),
-        img = new Image();
-    img.src = item.children[0].src;
-
-    img.onload = function ()
-    {
-        this_.setCustomDragImage(img);
-        
-        goog.style.setStyle(this_.DragSource.getDragObject().image_, 
-        { 
-          'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
-        });
-        
-        var dragimg = this_.getItemImage();
-        dragimg.style.visibility = 'visible';
-        dragimg.style.opacity = 1;
-        this_.DragSource.getDragObject().style.display = 'none';
-        item.style.display = '';
-    };
+    this.setCustomDragImage(event.target.getDragObject().cloneNode(true));
   };
 };
