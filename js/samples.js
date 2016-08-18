@@ -202,9 +202,9 @@ window.onload = function()
       'onDragDrop'        : function(){goog.log.info(theLogger, 'Callback: onDragDrop')},
       'onGetDropTarget'   : function(){goog.log.info(theLogger, 'Callback: onGetDropTarget')},
       'onDragOver'        : function(){goog.log.info(theLogger, 'Callback: onDragOver')},
-      'onCreateImage'     : function()
+      'onCreateImage'     : function(event)
       {
-        customImage.call(this);
+        customImage.call(this, event);
         goog.log.info(theLogger, 'Callback: onCreateImage');
       }
     });
