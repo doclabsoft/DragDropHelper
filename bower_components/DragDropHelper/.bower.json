@@ -15,11 +15,11 @@
     "closurelibrary": "*",
     "hammerjs": "~2.0.4"
   },
-  "_release": "2d32a0fdd5",
+  "_release": "7924464c39",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "2d32a0fdd559b43d453b8dcf929a6622ed19627c"
+    "commit": "7924464c39938b9fea421554d87d1bf6de5cfe4c"
   },
   "_source": "https://github.com/doclabsoft/DragDropHelper.git",
   "_target": "*",
