@@ -73,9 +73,9 @@ DD.fx.CustomDragDrop = function(settings)
 	 * Свойство указывает на возможность выполнять компонентом свои функции
 	 * @type {Boolean}
 	 * @private
-	 * @default true
+	 * @default false
 	 */
-	this.enabled_ = true;
+	this.disabled_ = false;
 
     /**
      * @type {null}
@@ -192,21 +192,59 @@ DD.fx.CustomDragDrop.prototype.getEventProvider = function()
 };
 
 /**
+ * Совмещение параметров по-умолчанию в параметрами, указанными в момент инициализации компонента
+ * @param  {Object} params   Список параметров, указанных в момент инициализации компонента
+ * @param  {Object} defaults Список парамметров по-умолчанию
+ * @return {Object}
+ */
+DD.fx.CustomDragDrop.prototype.assignParams = function(params, defaults)
+{
+    !params && (params = {});
+
+    for (var prop in defaults)
+    {
+        if (prop in params && typeof params[prop] === 'object')
+        {
+            for (var subProp in defaults[prop])
+                if (!(subProp in params[prop]))
+                    params[prop][subProp] = defaults[prop][subProp];
+        }
+        else if (!(prop in params))
+            params[prop] = defaults[prop];
+        else if ((prop in params) && params[prop] === undefined)
+            params[prop] = defaults[prop];
+    };
+
+    return params;
+};
+
+DD.fx.CustomDragDrop.prototype.setContainer = function(value, opt_allow)
+{
+    try 
+    {
+        if (!value || value.length < 1) return;
+		this.setContainer_(value, opt_allow);
+    }
+    catch (e)
+    {
+        if (this.params_.debugMode)
+            throw e;
+        else
+            this.logError('setContainer', e);
+    };
+};
+
+/**
  * Задает контейнер(ы), участвующие в работе дочерних компонентов
  * @param 	{Array} 	value 			Контейнер или массив контейнеров, являющиеся источником
  * @param 	{Array=} 	opt_allow 		Строковый массив, отвечающий за возможность перетаскивания того или иного
  *                              		элемента, в случае, если ничего не передано, то перетаскиваться
  *                              		будут все элементы, которые были указаны в источнике
  * @return 	{Array} 	container_
+ * @protected
  */
-DD.fx.CustomDragDrop.prototype.setContainer = function(value, opt_allow)
+DD.fx.CustomDragDrop.prototype.setContainer_ = function(value, opt_allow)
 {
-	if (typeof value === "undefined")
-			throw new Error("No element sent into setContainer()");
-
-	if (!value || value.length < 1)
-		return false;
-
 	var compareArray = [];
 
 	if (goog.isString(value))
@@ -264,7 +302,7 @@ DD.fx.CustomDragDrop.prototype.setAllowDragSources = function(value)
 	else if (goog.isArray(value))
 		valueArray = value;
 	else
-		return false
+		return;
 
 	// Объединяет новый строковый массив с уже существующим
 	this.allowElements_ = this.equalsContainer(this.allowElements_, valueArray);
@@ -359,8 +397,9 @@ DD.fx.CustomDragDrop.prototype.setDragging = function(value)
  */
 DD.fx.CustomDragDrop.prototype.setPixelThreshold = function(value, component)
 {
-	this.pixelThreshold = value;
+	if (!component) return;
 
+	this.pixelThreshold = value;
 	for (var i = 0, ln = this.container_.length; i < ln; i++)
 		this.container_[i][component].setPixelThreshold(value);
 };
@@ -371,19 +410,11 @@ DD.fx.CustomDragDrop.prototype.setPixelThreshold = function(value, component)
  */
 DD.fx.CustomDragDrop.prototype.setLapseThreshold = function(value, component)
 {
+	if (!component) return;
+	
 	this.lapseThreshold = value;
-
 	for (var i = 0, ln = this.container_.length; i < ln; i++)
 		this.container_[i][component].setLapseThreshold(value);
-};
-
-/**
- * Определяет захваченный и перемещаемый объект
- * @param {HTMLElement} value Элемент, учавствующий в захвате и перетаскивании
- */
-DD.fx.CustomDragDrop.prototype.setDragObject = function(value)
-{
-	this.dragObject_ = value;
 };
 
 /**
@@ -401,46 +432,27 @@ DD.fx.CustomDragDrop.prototype.getDragObject = function()
 DD.fx.CustomDragDrop.prototype.clearDragObject = function()
 {
 	this.dragObject_ = null;
+	this.clone_ = null;
 };
 
 DD.fx.CustomDragDrop.prototype.findDragSource = function(target)
 {
 	var dragSource = null;
-
 	for (var i = 0, ln = this.allowElements_.length; i < ln; i++)
 	{
 		dragSource = goog.dom.getAncestorByClass(target, this.allowElements_[i]);
-		if (dragSource)
-		{
-			this.createCloneDragObject_(dragSource);
-			return dragSource
-		}
-		else
-			return false;
+		if (dragSource) break;
 	};
+	return dragSource;
 };
 
-DD.fx.CustomDragDrop.prototype.createCloneDragObject_ = function(dragSource)
+/**
+ * Возвращает созданный образ для замещения оригинального элемента
+ * @return {HTMLElement}
+ */
+DD.fx.CustomDragDrop.prototype.getClone = function()
 {
-	var clone = dragSource.cloneNode(true);
-
-	clone.style.display = 'none';
-	clone.style.visibility = 'hidden';
-	clone.dataset.width = dragSource.offsetWidth;
-
-	dragSource.dataset.origin = true;
-	goog.dom.insertSiblingBefore(clone, dragSource);
-	this.setCopy_(clone);
-};
-
-DD.fx.CustomDragDrop.prototype.setCopy_ = function(copy)
-{
-	this.copy_ = copy;
-};
-
-DD.fx.CustomDragDrop.prototype.getCopy_ = function()
-{
-	return this.copy_;
+	return this.clone_;
 };
 
 /**
@@ -449,9 +461,7 @@ DD.fx.CustomDragDrop.prototype.getCopy_ = function()
  * @abstract
  * @private
  */
-DD.fx.CustomDragDrop.prototype.onDragDrop_ = function(event)
-{
-};
+DD.fx.CustomDragDrop.prototype.onDragDrop_ = function(event) {};
 
 /**
  * Выполнение события onDragOver по умолчанию
@@ -459,52 +469,37 @@ DD.fx.CustomDragDrop.prototype.onDragDrop_ = function(event)
  * @abstract
  * @private
  */
-DD.fx.CustomDragDrop.prototype.onDragOver_ = function(event)
-{
-};
+DD.fx.CustomDragDrop.prototype.onDragOver_ = function(event) {};
 
 /**
  * Выполнение события onGetDragSource по умолчанию
  * @param  {DD.fx.CustomDragDrop.EventType} event
  * @private
  */
-DD.fx.CustomDragDrop.prototype.onGetDragSource_ = function(event)
-{
-	var dragSource = this.getDragObject();
-	if (!dragSource)
-	{
-		dragSource = this.findDragSource(event.target);
-
-		if (!dragSource)
-			return null;
-		else
-			this.setDragObject(dragSource);
-	};
-	return dragSource;
-};
+DD.fx.CustomDragDrop.prototype.onGetDragSource_ = function(event) {};
 
 /**
  * Выполнение события onDragStart по умолчанию
  * @param  {DD.fx.CustomDragDrop.EventType} event
  * @private
  */
-DD.fx.CustomDragDrop.prototype.onDragStart_ = function(event)
-{
-};
+DD.fx.CustomDragDrop.prototype.onDragStart_ = function(event) {};
 
 /**
  * Задает пользовательский образ переносимого элемента
- * @param {HTMLElement} 						value 	Созданный образ, он не обязательно должен быть в существующей DOM-структуре
- * @param {DD.fx.CustomDragDrop.IMAGE_ALIGN} 	align 	Вырванивание образа относительно указателя
+ * @param {HTMLElement}   element Созданный образ, он не обязательно должен быть в существующей DOM-структуре
+ * @param {Object|Number} margins Объект, либо целое число. Указывает отступы перетаскиваемого элемента относительно перетаскиваемого объекта.
+ *                                Учитывается в случае, если образ перетаскиваемого объекта не совпадает с самим перетаскиваемым элементом
  */
-DD.fx.CustomDragDrop.prototype.setCustomDragImage = function(value, align)
+DD.fx.CustomDragDrop.prototype.setCustomDragImage = function(element, margins)
 {
-	this.customDragImage_ = value;
-	this.setImageAlign(align);
-
-	this.getDragObject().image_.appendChild(value);
+	this.customDragImage_ =
+	{
+		'element'   : element,
+		'margins' : this.extendCustomDragImageMargins_(margins)
+	};
+	return this.customDragImage_;
 };
-
 
 /**
  * Возвращает пользовательский образ
@@ -515,6 +510,41 @@ DD.fx.CustomDragDrop.prototype.getCustomDragImage = function()
 	return this.customDragImage_;
 };
 
+/**
+ * Определяет отступы перетаскиваемого элемента относительно родителя
+ * @param {Object|Number} margins 	Объект, либо целое число. Указывает отступы перетаскиваемого элемента относительно перетаскиваемого объекта.
+ *                                	Учитывается в случае, если образ перетаскиваемого объекта не совпадает с самим перетаскиваемым элементом
+ * @return {Object}
+ */
+DD.fx.CustomDragDrop.prototype.extendCustomDragImageMargins_ = function(margins)
+{
+	var customMargins = 
+	{
+		'top'    : 0,
+		'right'  : 0,
+		'bottom' : 0,
+		'left'   : 0
+	};
+
+	if (!goog.isObject(margins))
+	{
+		customMargins = 
+		{
+			'top'    : margins,
+			'right'  : margins,
+			'bottom' : margins,
+			'left'   : margins
+		};
+	}
+	else
+		goog.object.extend(customMargins, margins);
+
+	return customMargins;
+};
+
+/**
+ * Удаляет объект перетаскиваемого элемента из памяти
+ */
 DD.fx.CustomDragDrop.prototype.clearCustomDragImage = function()
 {
 	this.customDragImage_ = null;
@@ -531,16 +561,21 @@ DD.fx.CustomDragDrop.prototype.setImageAlign = function(value)
 
 DD.fx.CustomDragDrop.prototype.getImageAlign = function()
 {
-	return this.imageAlign_ || DD.fx.CustomDragDrop.IMAGE_ALIGN.iaCenter;
+	return this.imageAlign_;
 };
 
 /**
  * Задает возможность выполнять компонентом свои функции
  * @param {Boolean} value
  */
-DD.fx.CustomDragDrop.prototype.setEnable = function(value)
+DD.fx.CustomDragDrop.prototype.setDisable = function(value)
 {
-	this.enabled_ = value;
+	this.disabled_ = value;
+};
+
+DD.fx.CustomDragDrop.prototype.isDisable = function()
+{
+	return this.disabled_;
 };
 
 /**
@@ -576,3 +611,24 @@ DD.fx.CustomDragDrop.prototype.getDocumentScrollElement_ = function()
 		return document.documentElement;
 	return body;
 };
+
+/**
+ * Вывод сообщения об ошибка в консоль браузера
+ * @param  {String} component Название компонента, в котором произошла ошибка
+ * @param  {String} group     Название метода компонента, в котором произошла ошибка
+ * @param  {Object} error     Объект ошибки
+ */
+DD.fx.CustomDragDrop.prototype.logError = function(component, group, error)
+{
+    if (console)
+    {
+        console.group(component + '.' + group);
+        console.error(error.stack);
+        console.groupEnd();
+    };
+};
+
+Object.defineProperty(DD.fx.CustomDragDrop.prototype, 'disable', {
+	get: DD.fx.CustomDragDrop.prototype.isDisable,
+	set: DD.fx.CustomDragDrop.prototype.setDisable
+}); 

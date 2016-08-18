@@ -223,7 +223,7 @@ goog.structs.Map.prototype.remove = function(key) {
     this.count_--;
     this.version_++;
 
-    // clean up the keys array if the threshhold is hit
+    // clean up the keys array if the threshold is hit
     if (this.keys_.length > 2 * this.count_) {
       this.cleanupKeysArray_();
     }
@@ -302,7 +302,9 @@ goog.structs.Map.prototype.get = function(key, opt_val) {
 goog.structs.Map.prototype.set = function(key, value) {
   if (!(goog.structs.Map.hasKey_(this.map_, key))) {
     this.count_++;
-    this.keys_.push(key);
+    // TODO(johnlenz): This class lies, it claims to return an array of string
+    // keys, but instead returns the original object used.
+    this.keys_.push(/** @type {?} */ (key));
     // Only change the version if we add a new key.
     this.version_++;
   }
