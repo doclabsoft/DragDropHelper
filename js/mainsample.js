@@ -22,37 +22,21 @@ window.onload = function()
 
   var DragDropHelper = new DD.fx.DragDropHelper(
   {
-    'source'            : [source],
-    'target'            : [source],
-    'allowClassNames'   : 'item',
-    'grid'              : [[source, source]],
-    'gridGutter'        : 20,
-    'pixelThreshold'    : 0,
-    'lapseThreshold'    : 301,
-    'onCreateImage'     : customImage,
-    'scroll'            : [source],
-    'showScrollArea'    : true
+    source          : [source],
+    target          : [source],
+    allowClassNames : 'item',
+    grid            : [[source, source]],
+    gridGutter      : 20,
+    pixelThreshold  : {desktop: 0, sensor: 0},
+    lapseThreshold  : {desktop: 300, sensor: 0},
+    onCreateImage   : customImage,
+    scroll          : [source],
+    showScrollArea  : true
   });
 
   function customImage(event)
   {
-    var this_ = this,
-        item = this.getCopy(),
-        img = new Image();
-    img.src = item.children[0].src;
-
-    img.onload = function ()
-    {
-      this_.setCustomDragImage(img);
-      goog.style.setStyle(this_.DragSource.getDragObject().image_, 
-      { 
-        'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
-      });
-
-      this_.getItemImage().style.visibility = 'visible';
-      this_.DragSource.getDragObject().style.display = 'none';
-      item.style.display = '';
-    };
+    this.setCustomDragImage(event.target.getDragObject().cloneNode(true));
   };
 
   function createItem(container, count)
