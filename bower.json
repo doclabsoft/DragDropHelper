@@ -1,6 +1,6 @@
 {
   "name": "DragDropHelper",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "authors": [
     "valianton <valianton@mail.ru>"
   ],
@@ -8,6 +8,14 @@
   "main": "dragdrophelper.js",
   "moduleType": [
     "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "component.json",
+    "package.json",
+    "Makefile",
+    "tests",
+    "examples"
   ],
   "license": "Apache License",
   "homepage": "https://github.com/doclabsoft/DragDropHelper",
