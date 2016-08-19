@@ -8,12 +8,11 @@
   "dependencies": {
     "jquery-placeholder": "~2.0.7",
     "jquery.cookie": "~1.4.0",
-    "jquery" : "~2.2.0",
+    "jquery": "~2.2.0",
     "prism": "~1.0.1",
     "modernizr": "2.8.3",
-    "Waves": "waves#~0.7.2",
     "fastclick": ">=0.6.11",
-    "foundation": "~5.5.2"
+    "foundation-sites": "~6.2.3"
   },
   "authors": [
     "valianton <valianton@mail.ru>"

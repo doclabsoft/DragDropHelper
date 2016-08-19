@@ -1,18 +1,9 @@
 goog.require('DD.fx.DragDropHelper');
 
-$(document).foundation(
-{
-  offcanvas : {
-  open_method: 'move', 
-  close_on_click : true
-  }
-});
+$(document).foundation();
 
 window.onload = function()
 {
-  Waves.attach('.waves', ['waves-button']);
-  Waves.attach('.off-canvas-list a', ['waves-button']);
-  Waves.init();
 
   window.addEventListener("MSHoldVisual", function(e) {e.preventDefault(); }, false);
   window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
@@ -27,8 +18,8 @@ window.onload = function()
     allowClassNames : 'item',
     grid            : [[source, source]],
     gridGutter      : 20,
-    pixelThreshold  : {desktop: 0, sensor: 0},
-    lapseThreshold  : {desktop: 300, sensor: 0},
+    pixelThreshold  : {desktop: 0, sensor: 20},
+    lapseThreshold  : {desktop: 0, sensor: 300},
     onCreateImage   : customImage,
     scroll          : [source],
     showScrollArea  : true

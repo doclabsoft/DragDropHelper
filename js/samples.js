@@ -4,98 +4,28 @@ goog.require('goog.debug');
 goog.require('goog.debug.DivConsole');
 goog.require('goog.log');
 
+$(document).foundation();
+
 window.onload = function()
 {
   var getElement = document.getElementById.bind(document);
 
-  Waves.attach('.waves', ['waves-button']);
-  Waves.attach('.off-canvas-list a', ['waves-button']);
-  Waves.init();
-
   window.addEventListener("MSHoldVisual", function(e) {e.preventDefault(); }, false);
   window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
 
-  initSample1();
-  initSample2();
-  initSample3();
-  initSample4();
-  initSample5();
-  /** Sample with pixel threshold */
-  initSample6();
-  /** Sample with lapse threshold */
-  initSample7();
-  /** Sample with callbacks */
-  initSample8();
+  initExample1();
+  initExample2();
+  initExample3();
+  initExample4();
+  initExample5();
+  initExample6();
+  initExample7();
+  initExample8();
 
-  function initSample1 ()
+
+  function initExample1 ()
   {
-    var source = getElement('original-container-1');
-    createItem(source, 10);
-    var DragDropHelper = new DD.fx.DragDropHelper(
-    {
-      'source'            : [source],
-      'allowClassNames'   : 'item'
-    });
-  };
-
-  function initSample2 ()
-  {
-    var source = getElement('original-container-2');
-    createItem(source, 10);
-    var DragDropHelper = new DD.fx.DragDropHelper(
-    {
-      'source'            : [source],
-      'allowClassNames'   : 'item',
-      'onCreateImage'     : customImage
-    });
-  };
-
-  function initSample3 ()
-  {
-    var source = getElement('original-container-3');
-    var clone = getElement('original-container-4');
-    createItem(source, 10);
-    createItem(clone, 10);
-    var DragDropHelper = new DD.fx.DragDropHelper(
-      {
-        'source'            : [clone, source],
-        'target'            : [clone, source],
-        'allowClassNames'   : 'item',
-        'grid'              : [[clone, clone], [source, source]],
-        'gridGutter'        : 20,
-        'onCreateImage'     : customImage,
-        'onDragDrop'        : isEmptyContainer
-      });
-
-    function isEmptyContainer(event)
-    {
-      if (event.dropArea == source && source.children.length == 0)
-        source.appendChild(event.dragSource);
-      else if (event.dropArea == clone && clone.children.length == 0)
-        clone.appendChild(event.dragSource);
-    };
-  };
-
-  function initSample4 ()
-  {
-    var source = getElement('original-container-5');
-    createItem(source, 50);
-    var DragDropHelper = new DD.fx.DragDropHelper(
-    {
-      'source'            : [source],
-      'target'            : [source],
-      'allowClassNames'   : 'item',
-      'grid'              : [[source, source]],
-      'gridGutter'        : 20,
-      'onCreateImage'     : customImage,
-      'scroll'            : [source],
-      'showScrollArea'    : true
-    });
-  };
-
-  function initSample5 ()
-  {
-    var source = getElement('original-container-6'),
+    var source = getElement('example-container-1'),
         alphaCoords = {},
         marginItem = 10,
         lastzIndex = 1,
@@ -136,12 +66,37 @@ window.onload = function()
     };
   };
 
+  function initExample2 ()
+  {
+    var source = getElement('example-container-2');
+    createItem(source, 10);
+    var DragDropHelper = new DD.fx.DragDropHelper(
+    {
+      'source'            : [source],
+      'allowClassNames'   : 'item'
+    });
+  };
+
+
+  function initExample3 ()
+  {
+    var source = getElement('example-container-3');
+    createItem(source, 10);
+    var DragDropHelper = new DD.fx.DragDropHelper(
+    {
+      'source'            : [source],
+      'allowClassNames'   : 'item',
+      'onCreateImage'     : customImage
+    });
+  };
+
+
   /**
    * Init sample with pixel threshold
    */
-  function initSample6 ()
+  function initExample4 ()
   {
-    var source = getElement('container-pt');
+    var source = getElement('example-container-4');
     createItem(source, 5);
     var DragDropHelper = new DD.fx.DragDropHelper(
     {
@@ -156,9 +111,9 @@ window.onload = function()
   /**
    * Init sample with lapse threshold
    */
-  function initSample7 ()
+  function initExample5 ()
   {
-    var source = getElement('container-lt');
+    var source = getElement('example-container-5');
     createItem(source, 5);
     var DragDropHelper = new DD.fx.DragDropHelper(
     {
@@ -170,12 +125,54 @@ window.onload = function()
     });
   };
 
+
+
+  function initExample6 ()
+  {
+    var source = getElement('example-container-6');
+    createItem(source, 10);
+    var DragDropHelper = new DD.fx.DragDropHelper(
+      {
+          source          : [source],
+          target          : [source],
+          allowClassNames : 'item',
+          grid            : [[source, source]],
+          gridGutter      : 20,
+          onCreateImage   : customImage
+      });
+
+    function isEmptyContainer(event)
+    {
+      if (event.dropArea == source && source.children.length == 0)
+        source.appendChild(event.dragSource);
+    };
+  };
+
+  function initExample7 ()
+  {
+    var source = getElement('example-container-7');
+    createItem(source, 50);
+    var DragDropHelper = new DD.fx.DragDropHelper(
+    {
+      'source'            : [source],
+      'target'            : [source],
+      'allowClassNames'   : 'item',
+      'grid'              : [[source, source]],
+      'gridGutter'        : 20,
+      'onCreateImage'     : customImage,
+      'scroll'            : [source],
+      'showScrollArea'    : true
+    });
+  };
+
+
+
   /**
    * Init sample with callbacks
    */
-  function initSample8 ()
+  function initExample8 ()
   {
-    var source = getElement('container-callbacks'),
+    var source = getElement('example-container-8'),
         consoleContainer = getElement('container-console'),
         console = new goog.debug.DivConsole(consoleContainer),
         theLogger = goog.log.getLogger('');
@@ -189,7 +186,6 @@ window.onload = function()
     {
       'source'            : [source],
       'target'            : [source],
-      'scroll'            : [source],
       'scroll'            : [source],
       'grid'              : [[source, source]],
       'gridGutter'        : 20,

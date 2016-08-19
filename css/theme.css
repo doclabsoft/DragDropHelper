@@ -84,6 +84,7 @@ pre[class*="language-"]
 pre[class*="language-"]
 {
   box-shadow: none;
+  padding: 25px;
 }
 code[class*="language-"]
 {

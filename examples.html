@@ -1,438 +1,384 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>DragDropHelper.js — Examples</title>
+		<title>DragDropHelper.js</title>
 
-    <link rel="stylesheet" href="bower_components/Waves/dist/waves.css"/>
-    <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css"/>
-    <link rel="stylesheet" href="bower_components/prism/themes/prism.css"/>
-    <link rel="stylesheet" href="css/font.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <!-- Пользовательские изменения установленных стилей -->
-    <link rel="stylesheet" href="css/theme.css"/>
+		<link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.min.css"/>
+		<link rel="stylesheet" href="bower_components/prism/themes/prism.css"/>
+		<link rel="stylesheet" href="css/font.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+		<!-- Пользовательские изменения установленных стилей -->
+		<link rel="stylesheet" href="css/theme.css"/>
+	</head>
 
-    <script src="bower_components/Waves/dist/waves.min.js"></script>
-  </head>
+<body>
+	<div class="off-canvas-wrapper">
+		<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+			<div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+				<!-- Menu -->
+				<ul class="vertical menu">
+					<li><a href="index.html">Getting Started</a></li>
+					<li><a href="examples.html" class="selected">Examples</a></li>
+					<li><a href="docs.html">API</a></li>
+				</ul>
+			</div>
 
-  <body>
-  <div class="scrollWrapper">   
-  <div class="con">
-    <header class="hide-for-small">
-      <div data-magellan-expedition="fixed" class="main-header">
-        <div class="row">
-          <div class="large-12 columns">
-            <a href="index.html" class="logo">DragDropHelper.js</a>
-            <nav>
-              <a href="index.html" class="waves">Getting Started</a>
-              <a href="examples.html" class="selected waves">Examples</a>
-              <a href="docs.html"  class="waves">Documentation</a>
-            </nav>
-          </div>
-        </div>
-      </div>      
-    </header>  
+			<div class="off-canvas-content" data-off-canvas-content>
 
-  <div class="off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
+				<header>
+					<div class="hide-for-small-only">
+						<div data-magellan-expedition="fixed" class="main-header">
+							<div class="row">
+								<div class="large-12 columns">
+									<a href="index.html" class="logo">DragDropHelper.js</a>
+									<nav>
+										<a href="index.html">Getting Started</a>
+										<a href="examples.html" class="selected">Examples</a>
+										<a href="docs.html">API</a>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
 
-      <nav class="tab-bar show-for-small">
-        <section class="left-small">
-          <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-        </section>
-         <section class="middle tab-bar-section">
-          <h1 class="title">DragDropHelper.js</h1>
-        </section>
-        <section class="right-small">
-          <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-        </section>
-      </nav>
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-          <li><label>DragDropHelper index</label></li>
-          <li><a href="index.html">Getting Started</a></li>
-          <li><a href="examples.html">Examples</a></li>
-          <li><a href="docs.html">Documentation</a></li>
-        </ul>
-      </aside>
-      <aside class="right-off-canvas-menu">
-        <ul class="off-canvas-list">
-          <li><label>API & Documentation</label></li>
-          <li><a href="docs.html#Properties">Properties</a></li>
-          <li class="has-submenu"><a href="docs.html#Callbacks">Callbacks</a>
-            <ul class="right-submenu">
-                <li class="back"><a href="#">Back to API</a></li>
-                <li><a href="docs.html#onCreateImage">onCreateImage</a></li>
-                <li><a href="docs.html#onGetDragSource">onGetDragSource</a></li>
-                <li><a href="docs.html#onDragStart">onDragStart</a></li>
-                <li><a href="docs.html#onDragEnd">onDragEnd</a></li>
-                <li><a href="docs.html#onDragOverScroll">onDragOverScroll</a></li>
-                <li><a href="docs.html#onDragDrop">onDragDrop</a></li>
-                <li><a href="docs.html#onGetDropTarget">onGetDropTarget</a></li>
-                <li><a href="docs.html#onDragOver">onDragOver</a></li>
-                <li><a href="docs.html#onOverDropTarget">onOverDropTarget</a></li>
-            </ul>
-          </li>
-          <li class="has-submenu"><a href="docs.html#Methods">Methods</a>
-            <ul class="right-submenu">
-              <li class="back"><a href="#">Back to API</a></li>
-              <li><a href="docs.html#getCopy">getCopy</a></li>
-            </ul>
-          </li>
-        </ul>
-      </aside>
-    <div class="row">
-      <div class="large-12 columns">
-      
-        <h2 id="Examples">Examples</h2>
-        <!-- ================================ -->
-        <!-- Sample with absolute items START -->
-        <!-- ================================ -->
-        <h3 id="Standart">Simple Drag</h3>
-        <ul class="tabs" data-tab>
-          <li class="tab-title active waves"><a href="#container-6-demo">DEMO</a></li>
-          <li class="tab-title waves"><a href="#container-6-code">CODE</a></li>
-        </ul>
-        <div class="tabs-content" style="height:310px;">
-          <div class="content active" id="container-6-demo">
-            <div class="container-source absolutle--items" id="original-container-6"></div>
-          </div>
-          <div class="content" id="container-6-code">
-            <pre data-start class="line-numbers"><code class="language-javascript">goog.require('DD.fx.DragDropHelper');
+					<nav class="tab-bar show-for-small-only">
+						<section class="middle tab-bar-section">
+							<h1 class="title">DragDropHelper.js - Examples</h1>
+						</section>
+						<section class="right-small">
+							<i class="left-off-canvas-toggle menu-icon" data-toggle="offCanvasRight"></i>
+						</section>
+					</nav>
+
+				</header>
+
+				<div class="row">
+					<div class="columns small-12">
+
+						<!-- ================================ -->
+						<!-- Sample with absolute items START -->
+						<!-- ================================ -->
+						<h3 id="Standart">Simple Drag</h3>
+
+						<ul class="tabs" data-tabs id="example-tabs-1">
+							<li class="tabs-title is-active">
+								<a href="#example-tab-1-demo" aria-selected="true">DEMO</a>
+							</li>
+							<li class="tabs-title">
+								<a href="#example-tab-1-code">CODE</a>
+							</li>
+						</ul>
+
+<!--  -->
+						<div class="tabs-content" data-tabs-content="example-tabs-1" style="height:310px;">
+							<div class="tabs-panel is-active" id="example-tab-1-demo">
+								<div class="container-source absolutle--items" id="example-container-1"></div>
+							</div>
+							<div class="tabs-panel" id="example-tab-1-code">
+								<pre data-start class="line-numbers"><code class="language-javascript">goog.require('DD.fx.DragDropHelper');
 goog.require('goog.style');
 
 window.onload = function()
 {
-  var source = document.getElementById('original-container-6'),
-      alphaCoords = {},
-      marginItem = 10,
-      lastzIndex = 1,
-      style;
+	var source = document.getElementById('example-container-1'),
+	    alphaCoords = {},
+	    marginItem = 10,
+	    lastzIndex = 1,
+	    style;
 
-  var DragDropHelper = new DD.fx.DragDropHelper(
-  {
-    'source'            : [source],
-    'target'            : [source],
-    'allowClassNames'   : 'item',
-    'onCreateImage'     : customImage,
-    'onDragDrop'        : putInContainer,
-    'onGetDragSource'   : storeStyle
-  });
+	var DragDropHelper = new DD.fx.DragDropHelper(
+	{
+		'source'            : [source],
+		'target'            : [source],
+		'allowClassNames'   : 'item',
+		'onCreateImage'     : customImage,
+		'onDragDrop'        : putInContainer,
+		'onGetDragSource'   : storeStyle
+	});
 
-  function storeStyle (event)
-  {
-    style = event.dragSource.style;
-  };
+	function storeStyle (event)
+	{
+		style = event.dragSource.style;
+	};
 
-  function putInContainer (event)
-  {
-    var dropArea = event.dropArea,
-        dropAreaOffset = goog.style.getPageOffset(dropArea),
-        dragItemSize = goog.style.getSize(event.dragSource),
-        x = event.coords.x - dropAreaOffset.x - (dragItemSize.width / 2),
-        y = event.coords.y - dropAreaOffset.y - (dragItemSize.height / 2);
+	function putInContainer (event)
+	{
+		var dropArea = event.dropArea,
+				dropAreaOffset = goog.style.getPageOffset(dropArea),
+				dragItemSize = goog.style.getSize(event.dragSource),
+				x = event.coords.x - dropAreaOffset.x - (dragItemSize.width / 2),
+				y = event.coords.y - dropAreaOffset.y - (dragItemSize.height / 2);
 
-    if (x < 0 || y < 0 || y > source.offsetHeight || x > source.offsetWidth)
-      event.dragSource.style = style;
-    else
-    {
-      goog.style.setPosition(event.dragSource, x - marginItem, y - marginItem);
-      event.dragSource.style.zIndex = lastzIndex++;
-    }
-  };
+		if (x < 0 || y < 0 || y > source.offsetHeight || x > source.offsetWidth)
+			event.dragSource.style = style;
+		else
+		{
+			goog.style.setPosition(event.dragSource, x - marginItem, y - marginItem);
+			event.dragSource.style.zIndex = lastzIndex++;
+		}
+	};
 
-  function customImage(event)
-  {
-    var this_ = this,
-        item = this.getCopy(),
-        img = new Image();
-    img.src = item.children[0].src;
-
-    img.onload = function ()
-    {
-        this_.setCustomDragImage(img);
-       
-        goog.style.setStyle(this_.DragSource.getDragObject().image_, 
-        { 
-          'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
-        });
-        
-        var dragimg = this_.getItemImage();
-        dragimg.style.visibility = 'visible';
-        dragimg.style.opacity = 1;
-        this_.DragSource.getDragObject().style.display = 'none';
-        item.style.display = '';
-    };
-  };
+	function customImage(event)
+	{
+		this.setCustomDragImage(event.target.getDragObject().cloneNode(true));
+	};
 };</code></pre>
-          </div>
-        </div>
-        <!-- ============================== -->
+							</div>
+						</div>
+<!--  -->
+						<h3 id="Standart">Standart call DragDropHelper</h3>
 
-        <h3 id="Standart">Standart call DragDropHelper</h3>
-        
-        <ul class="tabs" data-tab>
-          <li class="tab-title active waves"><a href="#panel1-1">DEMO</a></li>
-          <li class="tab-title waves"><a href="#panel4-1">CODE</a></li>
-        </ul>
-        <div class="tabs-content" style="height:310px;">
-          <div class="content active" id="panel1-1">
-            <div class="container-source" id="original-container-1">
-            </div>
-          </div>
+						<ul class="tabs" data-tabs id="example-tabs-2">
+							<li class="tabs-title is-active">
+								<a href="#example-tab-2-demo" aria-selected="true">DEMO</a>
+							</li>
+							<li class="tabs-title">
+								<a href="#example-tab-2-code">CODE</a>
+							</li>
+						</ul>
 
-          <div class="content" id="panel4-1">
-            <pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('original-container-1');
+						<div class="tabs-content" data-tabs-content="example-tabs-2" style="height:310px;">
+							<div class="tabs-panel is-active" id="example-tab-2-demo">
+								<div class="container-source" id="example-container-2"></div>
+							</div>
+							<div class="tabs-panel" id="example-tab-2-code">
+								<pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('example-container-2');
 var DragDropHelper = new DD.fx.DragDropHelper(
 {
-  'source'            : [source],
-  'allowClassNames'   : 'item'
+	'source'            : [source],
+	'allowClassNames'   : 'item'
 });</code></pre>
-          </div>
+							</div>
+						</div>
 
-        </div>
+						<h3 id="Standart">Create custom drag image</h3>
 
-        <h3 id="Standart">Create custom drag image</h3>
+						<ul class="tabs" data-tabs id="example-tabs-3">
+							<li class="tabs-title is-active">
+								<a href="#example-tab-3-demo" aria-selected="true">DEMO</a>
+							</li>
+							<li class="tabs-title">
+								<a href="#example-tab-3-code">CODE</a>
+							</li>
+						</ul>
 
-        <ul class="tabs" data-tab>
-          <li class="tab-title active waves"><a href="#panel1-2">DEMO</a></li>
-          <li class="tab-title waves"><a href="#panel4-2">CODE</a></li>
-        </ul>
-
-         <div class="tabs-content" style="height:310px;">
-          <div class="content active" id="panel1-2">
-            <div class="container-source" id="original-container-2">
-            </div>
-          </div>
-
-          <div class="content" id="panel4-2">
-             <pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('original-container-2');
+						<div class="tabs-content" data-tabs-content="example-tabs-3" style="height:310px;">
+							<div class="tabs-panel is-active" id="example-tab-3-demo">
+								<div class="container-source" id="example-container-3"></div>
+							</div>
+							<div class="tabs-panel" id="example-tab-3-code">
+		<pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('example-container-3');
 var DragDropHelper = new DD.fx.DragDropHelper(
 {
-  'source'            : [source],
-  'allowClassNames'   : 'item',
-  'onCreateImage'     : customImage
+	'source'            : [source],
+	'allowClassNames'   : 'item',
+	'onCreateImage'     : customImage
 });
 
 function customImage()
 {
-  var this_ = this,
-      item = this.getCopy(),
-      img = new Image();
-  img.src = item.children[0].src;
+	var this_ = this,
+			item = this.getCopy(),
+			img = new Image();
+	img.src = item.children[0].src;
 
-  img.onload = function ()
-  {
-      this_.setCustomDragImage(img);
-     
-      goog.style.setStyle(this_.DragSource.getDragObject().image_, 
-      { 
-        'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
-      });
-      
-      var dragimg = this_.getItemImage();
-      dragimg.style.visibility = 'visible';
-      dragimg.style.opacity = 1;
-      this_.DragSource.getDragObject().style.display = 'none';
-      item.style.display = '';
-  };
+	img.onload = function ()
+	{
+			this_.setCustomDragImage(img);
+		 
+			goog.style.setStyle(this_.DragSource.getDragObject().image_, 
+			{ 
+				'box-shadow' : '0 0 0 2px #fff, 0 0 10px 2px #000'
+			});
+			
+			var dragimg = this_.getItemImage();
+			dragimg.style.visibility = 'visible';
+			dragimg.style.opacity = 1;
+			this_.DragSource.getDragObject().style.display = 'none';
+			item.style.display = '';
+	};
 };</code></pre>
-          </div>
+							</div>
+						</div>
 
-        </div>
+<!-- ============================== -->
+<!-- With Pixel threshold START -->
+<!-- ============================== -->
+						<h3 id="Standart">With Pixel threshold <span class="h-desc">(pixelThreshold = '20px')</span></h3>
 
-        <!-- ============================== -->
-        <!-- With Pixel threshold START -->
-        <!-- ============================== -->
-        <h3 id="Standart">With Pixel threshold <span class="h-desc">(pixelThreshold = '20px'; default lapseThreshold = 300ms)</span></h3>
-        <ul class="tabs" data-tab>
-          <li class="tab-title active waves"><a href="#container-pt-demo">DEMO</a></li>
-          <li class="tab-title waves"><a href="#container-pt-code">CODE</a></li>
-        </ul>
-        <div class="tabs-content" style="height:310px;">
-          <div class="content active" id="container-pt-demo">
-            <div class="container-source pixel-treshold" id="container-pt"></div>
-          </div>
-          <div class="content" id="container-pt-code">
-            <pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('container-pt');
+						<ul class="tabs" data-tabs id="example-tabs-4">
+							<li class="tabs-title is-active">
+								<a href="#example-tab-4-demo" aria-selected="true">DEMO</a>
+							</li>
+							<li class="tabs-title">
+								<a href="#example-tab-4-code">CODE</a>
+							</li>
+						</ul>
+
+						<div class="tabs-content" data-tabs-content="example-tabs-4" style="height:310px;">
+							<div class="tabs-panel is-active" id="example-tab-4-demo">
+								<div class="container-source" id="example-container-4"></div>
+							</div>
+							<div class="tabs-panel" id="example-tab-4-code">
+								<pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('example-container-4');
 var DragDropHelper = new DD.fx.DragDropHelper(
 {
-  'source'            : [source],
-  'allowClassNames'   : 'item',
-  'pixelThreshold'    : 20 /** in pixels*/
+	'source'            : [source],
+	'allowClassNames'   : 'item',
+	'pixelThreshold'    : {desktop: 20, sensor: 20}
 });</code></pre>
-          </div>
-        </div>
-        <!-- ============================== -->
+							</div>
+						</div>
 
-        <!-- ============================== -->
-        <!-- With Lapse threshold START -->
-        <!-- ============================== -->
-        <h3 id="Standart">With Lapse threshold <span class="h-desc">(lapseThreshold = '500ms'; default lapseThreshold = 300ms)</span></h3>
-        <ul class="tabs" data-tab>
-          <li class="tab-title active waves"><a href="#container-lt-demo">DEMO</a></li>
-          <li class="tab-title waves"><a href="#container-lt-code">CODE</a></li>
-        </ul>
-        <div class="tabs-content" style="height:310px;">
-          <div class="content active" id="container-lt-demo">
-            <div class="container-source lapse-treshold" id="container-lt"></div>
-          </div>
-          <div class="content" id="container-lt-code">
-            <pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('container-lt');
+						<!-- ============================== -->
+						<!-- With Lapse threshold START -->
+						<!-- ============================== -->
+						<h3 id="Standart">With Lapse threshold <span class="h-desc">(lapseThreshold = '500ms')</span></h3>
+
+						<ul class="tabs" data-tabs id="example-tabs-5">
+							<li class="tabs-title is-active">
+								<a href="#example-tab-5-demo" aria-selected="true">DEMO</a>
+							</li>
+							<li class="tabs-title">
+								<a href="#example-tab-5-code">CODE</a>
+							</li>
+						</ul>
+
+						<div class="tabs-content" data-tabs-content="example-tabs-5" style="height:310px;">
+							<div class="tabs-panel is-active" id="example-tab-5-demo">
+								<div class="container-source" id="example-container-5"></div>
+							</div>
+							<div class="tabs-panel" id="example-tab-5-code">
+								<pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('example-container-5');
 var DragDropHelper = new DD.fx.DragDropHelper(
 {
-  'source'            : [source],
-  'allowClassNames'   : 'item',
-  'lapseThreshold'    : 500 /** in ms*/
+	'source'            : [source],
+	'allowClassNames'   : 'item',
+	'lapseThreshold'    : {desktop: 500, sensor: 500}
 });</code></pre>
-          </div>
-        </div>
-        <!-- ============================== -->
+							</div>
+						</div>
 
-        <h3 id="Standart">With ShuffleGrid</h3>
+						<h3 id="Standart">With ShuffleGrid</h3>
 
-        <ul class="tabs" data-tab>
-          <li class="tab-title active waves"><a href="#panel1-3">DEMO</a></li>
-          <li class="tab-title waves"><a href="#panel4-3">CODE</a></li>
-        </ul>
+						<ul class="tabs" data-tabs id="example-tabs-6">
+							<li class="tabs-title is-active">
+								<a href="#example-tab-6-demo" aria-selected="true">DEMO</a>
+							</li>
+							<li class="tabs-title">
+								<a href="#example-tab-6-code">CODE</a>
+							</li>
+						</ul>
 
-        <div class="tabs-content">
-          <div class="content active" id="panel1-3">
-            
-            <div class="container-source" id="original-container-3" style="float: left;width:45%;margin-right:10%;">
-            </div>
-
-            <div class="container-source" id="original-container-4" style="float: left;width:45%;">
-            </div>
-
-          </div>
-
-          <div class="content" id="panel4-3" style="max-height: 310px;">
-            <pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('original-container-3');
-var clone = document.getElementById('original-container-4');
+						<div class="tabs-content" data-tabs-content="example-tabs-6" style="height:310px;">
+							<div class="tabs-panel is-active" id="example-tab-6-demo">
+								<div class="container-source" id="example-container-6" style="position: relative"></div>
+							</div>
+							<div class="tabs-panel" id="example-tab-6-demo">
+								<pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('oexample-container-6');
 var DragDropHelper = new DD.fx.DragDropHelper(
-  {
-    'source'            : [clone, source],
-    'target'            : [clone, source],
-    'allowClassNames'   : 'item',
-    'grid'              : [[clone, clone], [source, source]],
-    'gridGutter'        : 20,
-    'onDragDrop'        : isEmptyContainer
-  });
+	{
+		'source'            : [source, source],
+		'target'            : [source, source],
+		'allowClassNames'   : 'item',
+		'grid'              : [[source, source]],
+		'gridGutter'        : 20,
+		'onDragDrop'        : isEmptyContainer
+	});
 
 function isEmptyContainer(event)
 {
-  if (event.dropArea == source && source.children.length == 0)
-    source.appendChild(event.dragSource);
-  else if (event.dropArea == clone && clone.children.length == 0)
-    clone.appendChild(event.dragSource);
+	if (event.dropArea == source && source.children.length == 0)
+		source.appendChild(event.dragSource);
+	else if (event.dropArea == clone && clone.children.length == 0)
+		clone.appendChild(event.dragSource);
 };</code></pre>
-          </div>
+							</div>
+						</div>
 
-        </div>
+						<h3 id="Standart">With DragScroll</h3>
 
+						<ul class="tabs" data-tabs id="example-tabs-7">
+							<li class="tabs-title is-active">
+								<a href="#example-tab-7-demo" aria-selected="true">DEMO</a>
+							</li>
+							<li class="tabs-title">
+								<a href="#example-tab-7-code">CODE</a>
+							</li>
+						</ul>
 
-        <h3 id="Standart">With DragScroll</h3>
-
-
-        <ul class="tabs" data-tab>
-          <li class="tab-title active waves"><a href="#panel1-4">DEMO</a></li>
-          <li class="tab-title waves"><a href="#panel4-4">CODE</a></li>
-        </ul>
-        <div class="tabs-content">
-
-          <div class="content active" id="panel1-4">
-            <div class="container-source" id="original-container-5">
-            </div>
-          </div>
-
-          <div class="content" id="panel4-4">
-            <pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('original-container-5');
+						<div class="tabs-content" data-tabs-content="example-tabs-7" style="height:310px;">
+							<div class="tabs-panel is-active" id="example-tab-7-demo">
+								<div class="container-source" id="example-container-7" style="position: relative"></div>
+							</div>
+							<div class="tabs-panel" id="example-tab-7-demo">
+								<pre data-start class="line-numbers"><code class="language-javascript">var source = document.getElementById('original-container-5');
 var DragDropHelper = new DD.fx.DragDropHelper(
 {
-  'source'            : [source],
-  'target'            : [source],
-  'allowClassNames'   : 'item',
-  'grid'              : [[source, source]],
-  'gridGutter'        : 20,
-  'scroll'            : [source],
-  'showScrollArea'    : true
+	'source'            : [source],
+	'target'            : [source],
+	'allowClassNames'   : 'item',
+	'grid'              : [[source, source]],
+	'gridGutter'        : 20,
+	'scroll'            : [source],
+	'showScrollArea'    : true
 });</code></pre>
-          </div>
-        </div>
+							</div>
+						</div>
 
-        <!-- ============================== -->
-        <!-- With Callbacks START -->
-        <!-- ============================== -->
-        <h3 id="Standart">Callbacks</h3>
-        <div class="column large-6">
-          <div class="tabs-content" style="height:310px;">
-            <div class="container-source" id="container-callbacks"></div>
-          </div>  
-        </div>
-        <div class="column large-6">
-          <div class="container-console" id="container-console"></div>
-        </div>
-        <!-- ============================== -->
-      </div>
-    </div>
 
-    <!-- close the off-canvas menu -->
-    <a class="exit-off-canvas"></a>
+						<!-- ============================== -->
+						<!-- With Callbacks START -->
+						<!-- ============================== -->
+						<h3 id="Standart">Callbacks</h3>
+						<div class="column large-6">
+							<div class="tabs-content" style="height:310px;">
+								<div class="container-source" id="example-container-8" style="position:relative"></div>
+							</div>  
+						</div>
+						<div class="column large-6">
+							<div class="container-console" id="container-console"></div>
+						</div>
+					</div>
+				</div>
 
-    <footer>
-      <div class="row">
-        <div class="large-12 columns">
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="row">
-        <div class="large-12 columns">
-          <section class="left">
-            <span>DragDropHelper.js</span>
-          </section>
-          <section class="right">
-            <span>© 2015 DragDropHelper. All rights reserved.</span>
-          </section>
-        </div>
-      </div>
-      </div>
-    </footer>
-    
-    </div>
-    
-  </div>
-  </div>
+			<footer>
+				<div class="row">
+					<div class="small-12 columns">
+						<section class="left">
+							<span>DragDropHelper.js</span>
+						</section>
+						<section class="right">
+							<span>© 2015-2016 DragDropHelper. All rights reserved.</span>
+						</section>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/foundation/js/foundation.min.js"></script>
 
-  <script src="bower_components/prism/prism.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/foundation-sites/dist/foundation.min.js"></script>
+	<script src="bower_components/foundation-sites/dist/plugins/foundation.core.js"></script>
+	<script src="bower_components/foundation-sites/dist/plugins/foundation.offcanvas.js"></script>
+	<script src="bower_components/foundation-sites/dist/plugins/foundation.tabs.js"></script>
 
-  <script src='bower_components/closurelibrary/closure/goog/base.js'></script>
-  <script src='bower_components/DragDropHelper/deps.js'></script>
-  <script src='bower_components/hammerjs/hammer.min.js'></script>
+	<script src="bower_components/foundation-sites/dist/plugins/foundation.util.mediaQuery.js"></script>
+	<script src="bower_components/foundation-sites/dist/plugins/foundation.util.triggers.js"></script>
+	<script src="bower_components/foundation-sites/dist/plugins/foundation.util.motion.js"></script>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenLite.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/plugins/CSSPlugin.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/plugins/ScrollToPlugin.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/plugins/BezierPlugin.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/easing/EasePack.min.js"></script>
 
-  <script src='js/samples.js'></script>
+	<script src="bower_components/prism/prism.js"></script>
 
-  <script type="text/javascript">
-  $(document).foundation(
-  {
-    'offcanvas' :
-    {
-      'open_method'     : 'move', 
-      'close_on_click'  : true
-    }
-  });
-  </script>
-  </body>
+	<script src='bower_components/closurelibrary/closure/goog/base.js'></script>
+	<script src='bower_components/DragDropHelper/deps.js'></script>
+	<script src='bower_components/hammerjs/hammer.min.js'></script>
+
+	<script src='js/samples.js'></script>
+</body>
 </html>
